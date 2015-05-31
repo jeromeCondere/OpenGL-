@@ -1,0 +1,17 @@
+#version 130
+uniform vec3 vit;
+uniform float v0;
+uniform float t;
+uniform float life;
+out vec4 color;
+out float lifeT;
+void main(void)
+{
+vec3 pos;
+pos.x=v0*vit.x*t+gl_Vertex.x;
+pos.y=v0*vit.y*t+gl_Vertex.y;
+pos.z=-0.5*10*t*t+v0*vit.z*t+gl_Vertex.z;
+  color=gl_Color;
+  lifeT=life;
+   gl_Position =gl_ModelViewProjectionMatrix*vec4(pos,gl_Vertex.w) ;
+}

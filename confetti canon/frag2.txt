@@ -1,0 +1,12 @@
+#version 130
+
+flat in float t2;
+flat in float l2;
+flat in vec3 Color;
+void main(void)
+{
+float alpha=clamp(t2-l2,0,1);
+
+vec3 fin=mix(vec3(Color),vec3(0,0,0),alpha);
+   gl_FragColor = vec4(fin , 1.0 );
+}

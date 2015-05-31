@@ -1,0 +1,22 @@
+#version 130
+
+in float lifeT;
+in vec4 color;
+uniform float t;
+void main(void)
+{
+
+float factor;
+vec4 black=vec4(0,0,0,1);
+if(t>lifeT-1.5)
+
+{
+factor=clamp(lifeT-t,0,1);
+}
+else 
+{
+factor=1.0;
+}
+
+   gl_FragColor = color;
+}

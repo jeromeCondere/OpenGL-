@@ -1,0 +1,38 @@
+#version 130
+
+
+uniform struct 
+{
+
+ float alpha ;
+ float beta;
+ float vIn;
+ float t;
+ float start;
+ float life;
+}p;
+flat out  float t2;
+flat out float l2;
+flat out vec3 Color;
+void main(void)
+{
+Color=vec3(gl_Color);
+t2=p.t-p.start;
+l2=p.life;
+if(p.t>p.start)
+{
+float a =radians(p.alpha);
+float b=radians(p.beta);
+float v0=p.vIn;
+float t1=p.t-p.start;
+vec3 posFin;
+posFin.x=gl_Vertex.x+v0*sin(b)*cos(a)*t1;
+posFin.y=gl_Vertex.x+v0*sin(b)*sin(a)*t1;
+posFin.z=gl_Vertex.z-0.5*10*t1*t1+v0*cos(b)*t1;
+
+   gl_Position = gl_ModelViewProjectionMatrix*vec4(posFin,gl_Vertex.w);
+   
+   }
+   else
+   gl_Position=ftransform();
+}
